@@ -10,6 +10,7 @@ import gw.util.GosuExceptionUtil;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SpaceMarineClient
 {
@@ -24,13 +25,16 @@ public class SpaceMarineClient
       invokeRequest.setFunctionName("purgeItInFlame");
       invokeRequest.setPayload("10");
       System.out.println(byteBufferToString(
-        lambdaClient.invoke(invokeRequest).getPayload(),
-        Charset.forName( "UTF-8")));
+        lambdaClient.invoke(invokeRequest).getPayload()));
     } catch (Exception e) {
       GosuExceptionUtil.forceThrow( e );
     }
   }
 
+  public static String byteBufferToString( ByteBuffer buffer) {
+    return byteBufferToString(buffer, StandardCharsets.UTF_8);
+  }
+  
   public static String byteBufferToString( ByteBuffer buffer, Charset charset) {
     byte[] bytes;
     if (buffer.hasArray()) {
