@@ -10,6 +10,7 @@
 
   <properties>
     <gosu.version>1.14</gosu.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -42,8 +43,38 @@
   </dependencies>
 
   <build>
-    <sourceDirectory>src/main/gosu</sourceDirectory>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/gosu</source>
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-source</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/test/gosu</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -64,9 +95,28 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
-        <configuration>
-          <compilerId>gosuc</compilerId>
-        </configuration>
+        <executions>
+          <execution>
+            <id>Compile Gosu sources</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <compilerId>gosuc</compilerId>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Compile Gosu test sources</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+            <configuration>
+              <compilerId>gosuc</compilerId>
+            </configuration>
+          </execution>
+        </executions>
         <dependencies>
           <dependency>
             <groupId>org.gosu-lang.gosu</groupId>
