@@ -9,16 +9,11 @@
   <name>lambda-gosu-example</name>
 
   <properties>
-    <gosu.version>1.14</gosu.version>
+    <gosu.version>1-X-SNAPSHOT</gosu.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-lambda-java-core</artifactId>
-      <version>1.1.0</version>
-    </dependency>
     <dependency>
       <groupId>org.gosu-lang.gosu</groupId>
       <artifactId>gosu-core-api</artifactId>
@@ -28,23 +23,6 @@
       <groupId>org.gosu-lang.gosu</groupId>
       <artifactId>gosu-core</artifactId>
       <version>${gosu.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk</artifactId>
-      <version>1.11.20</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
