@@ -8,7 +8,4 @@ class SpaceMarine {
     return (depthToPurge == 0 ? "" : purgeItInFlame( depthToPurge - 1 )) + "  ".repeat(depthToPurge) + PURGE_IT_IN_FLAME;
   }
 
-  function classloaderPurge() : String {
-    return "done"
-  }
 }
